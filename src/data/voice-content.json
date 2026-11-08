@@ -1,10 +1,7 @@
 {
   "_note": "Everything the voice says or may draw on. Facts come only from official buffalo.edu pages (source on each) or the stop's sign. Jokes must not contain facts that are not in this file. Entries starting with TODO are ignored. After editing: restart the server (welcome, arrivalGreetings) and run `npm run agents:sync` (facts, jokes, guideGreeting).",
-
-  "welcome": "Welcome to Campus Dash, Bull! Your mission: find every stop, catch the creatures hiding nearby, and beat the clock. No map will hold your hand for long, so trust your instincts. Keep your eyes up, watch where you walk, and let's go!",
-
+  "welcome": "Welcome to UBMon Campus Dash, Bull! My name is Reda! Your mission: find every stop, catch the creatures hiding nearby, and beat the clock. No map will hold your hand for long, so trust your instincts. Keep your eyes up, watch where you walk, and let's go!",
   "guideGreeting": "Hey Bull! I am your campus guide. Ask me anything about UB, like who Capen Hall is named after, or what is hiding in the university archives. Let's walk!",
-
   "arrivalGreetings": [
     "Hey Bull, you reached {stop}! Congratulations, your campus map just leveled up.",
     "Boom! {stop}, found it. Nice work, Bull!",
@@ -15,13 +12,11 @@
     "You found {stop}, Bull! The map app on your phone is getting nervous.",
     "Stop collected: {stop}! You are walking like a true UB local."
   ],
-
   "quizIntros": [
     "A wild {creature} appeared! Answer right to catch it.",
     "Look, Bull, it's {creature}! Get this one right and it's yours.",
     "{creature} is right here. Catch it with the right answer!"
   ],
-
   "quizReactions": {
     "correct": [
       "Nice catch, Bull! {creature} is in your Dex.",
@@ -39,56 +34,156 @@
       "And {creature} is gone! Don't worry, it will be back next run."
     ]
   },
-
   "facts": {
     "general": [
-      { "text": "UB is New York's flagship university and a member of the Association of American Universities.", "source": "https://www.buffalo.edu/home/ub_at_a_glance.html" },
-      { "text": "In 1989, UB became the first SUNY school invited to join the Association of American Universities.", "source": "https://www.buffalo.edu/home/ub_at_a_glance.html" },
-      { "text": "UB has three campuses: North Campus in Amherst, South Campus, and Downtown.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "North Campus opened in the early 1970s, and it is the largest of UB's three campuses.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "There is a 60-acre lake in the middle of North Campus, and the UB community gets free access to kayaks there.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "North Campus has a 65-acre living woods.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "The UB Stampede bus is free. It takes you around campus and between campuses.", "source": "https://www.buffalo.edu/parking/getting-around-UB/bus.html" },
-      { "text": "UB has sixteen NCAA Division One athletic programs that compete in the Mid-American Conference.", "source": "https://www.buffalo.edu/home/life.html" },
-      { "text": "UB has 7 libraries holding about 4 million print and electronic volumes.", "source": "https://www.buffalo.edu/home/ub_at_a_glance.html" },
-      { "text": "Greiner Hall is the first residence hall in the country built to Universal Design principles.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "The UB archives hold early punk manifestos and the original Lone Ranger radio scripts.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "UB has the only museum in the country dedicated only to the human brain. It is on South Campus.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "The Apothecary Museum on South Campus shows medicinal whiskey and asthma cigarettes.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "The first lab in the world devoted only to the study of cancer was at the UB medical school.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html" },
-      { "text": "Oozefest is UB's annual mud volleyball tournament.", "source": "https://www.buffalo.edu/home/ub_at_a_glance/a-z-index.html" }
+      {
+        "text": "UB is New York's flagship university and a member of the Association of American Universities.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance.html"
+      },
+      {
+        "text": "In 1989, UB became the first SUNY school invited to join the Association of American Universities.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance.html"
+      },
+      {
+        "text": "UB has three campuses: North Campus in Amherst, South Campus, and Downtown.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "North Campus opened in the early 1970s, and it is the largest of UB's three campuses.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "There is a 60-acre lake in the middle of North Campus, and the UB community gets free access to kayaks there.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "North Campus has a 65-acre living woods.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "The UB Stampede bus is free. It takes you around campus and between campuses.",
+        "source": "https://www.buffalo.edu/parking/getting-around-UB/bus.html"
+      },
+      {
+        "text": "UB has sixteen NCAA Division One athletic programs that compete in the Mid-American Conference.",
+        "source": "https://www.buffalo.edu/home/life.html"
+      },
+      {
+        "text": "UB has 7 libraries holding about 4 million print and electronic volumes.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance.html"
+      },
+      {
+        "text": "Greiner Hall is the first residence hall in the country built to Universal Design principles.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "The UB archives hold early punk manifestos and the original Lone Ranger radio scripts.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "UB has the only museum in the country dedicated only to the human brain. It is on South Campus.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "The Apothecary Museum on South Campus shows medicinal whiskey and asthma cigarettes.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "The first lab in the world devoted only to the study of cancer was at the UB medical school.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/our-campuses.html"
+      },
+      {
+        "text": "Oozefest is UB's annual mud volleyball tournament.",
+        "source": "https://www.buffalo.edu/home/ub_at_a_glance/a-z-index.html"
+      }
     ],
     "byStop": {
       "student-union": [
-        { "text": "The Student Union is open 24 hours a day, 7 days a week.", "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html" },
-        { "text": "The Welcome Center on the first floor of the Student Union helps with event information, directions and room reservations.", "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html" },
-        { "text": "Victor's Hub, in room 132 of the Student Union, has a reading nook, a board game room, a craft room, a recharge room and even a piano room.", "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html" },
-        { "text": "Outside the Student Union there is a bull sculpture that students paint. It is open for painting from sundown to sunup.", "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html" },
-        { "text": "The Student Union sign lists Pistachio's and the Student Associations.", "source": "Team photo of the Student Union sign (CLAUDE.md section 2.4)" }
+        {
+          "text": "The Student Union is open 24 hours a day, 7 days a week.",
+          "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html"
+        },
+        {
+          "text": "The Welcome Center on the first floor of the Student Union helps with event information, directions and room reservations.",
+          "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html"
+        },
+        {
+          "text": "Victor's Hub, in room 132 of the Student Union, has a reading nook, a board game room, a craft room, a recharge room and even a piano room.",
+          "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html"
+        },
+        {
+          "text": "Outside the Student Union there is a bull sculpture that students paint. It is open for painting from sundown to sunup.",
+          "source": "https://www.buffalo.edu/studentlife/who-we-are/departments/student-unions.html"
+        },
+        {
+          "text": "The Student Union sign lists Pistachio's and the Student Associations.",
+          "source": "Team photo of the Student Union sign (CLAUDE.md section 2.4)"
+        }
       ],
       "capen": [
-        { "text": "Capen Hall is named after Samuel P. Capen, UB's first full-time chancellor, who served from 1922 to 1950.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html" },
-        { "text": "Capen Hall is home to the Office of the President.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html" },
-        { "text": "The lower floors of Capen Hall hold the Undergraduate Library, the Science and Engineering Library and the University Archives.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html" },
-        { "text": "Capen Hall was completed in June 1977.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html" },
-        { "text": "UB's official mailing address is 12 Capen Hall.", "source": "https://www.buffalo.edu/home/ub_at_a_glance.html" }
+        {
+          "text": "Capen Hall is named after Samuel P. Capen, UB's first full-time chancellor, who served from 1922 to 1950.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html"
+        },
+        {
+          "text": "Capen Hall is home to the Office of the President.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html"
+        },
+        {
+          "text": "The lower floors of Capen Hall hold the Undergraduate Library, the Science and Engineering Library and the University Archives.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html"
+        },
+        {
+          "text": "Capen Hall was completed in June 1977.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/capen.detail.html"
+        },
+        {
+          "text": "UB's official mailing address is 12 Capen Hall.",
+          "source": "https://www.buffalo.edu/home/ub_at_a_glance.html"
+        }
       ],
       "davis": [
-        { "text": "Davis Hall is named after Barbara and Jack Davis, a Western New York couple. Jack Davis graduated from the UB engineering school in 1955.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html" },
-        { "text": "Jack Davis founded the company I Squared R in 1964.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html" },
-        { "text": "Davis Hall was completed in December 2011.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html" },
-        { "text": "Davis Hall is home to the departments of Computer Science and Engineering, and Electrical Engineering.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html" },
-        { "text": "Davis Hall houses research centers for document analysis and recognition, and for biometrics and sensors.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html" }
+        {
+          "text": "Davis Hall is named after Barbara and Jack Davis, a Western New York couple. Jack Davis graduated from the UB engineering school in 1955.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html"
+        },
+        {
+          "text": "Jack Davis founded the company I Squared R in 1964.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html"
+        },
+        {
+          "text": "Davis Hall was completed in December 2011.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html"
+        },
+        {
+          "text": "Davis Hall is home to the departments of Computer Science and Engineering, and Electrical Engineering.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html"
+        },
+        {
+          "text": "Davis Hall houses research centers for document analysis and recognition, and for biometrics and sensors.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/davis.detail.html"
+        }
       ],
       "lockwood": [
-        { "text": "Lockwood Memorial Library was completed in September 1977.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html" },
-        { "text": "Lockwood Library is named after Thomas B. Lockwood, a Buffalo attorney who served on the University Council for 28 years.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html" },
-        { "text": "The original Lockwood library is on South Campus. Today it is the Health Sciences Library in Abbott Hall.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html" },
-        { "text": "Lockwood Library has one of the finest collections of books, periodicals and government documents in New York.", "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html" }
+        {
+          "text": "Lockwood Memorial Library was completed in September 1977.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html"
+        },
+        {
+          "text": "Lockwood Library is named after Thomas B. Lockwood, a Buffalo attorney who served on the University Council for 28 years.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html"
+        },
+        {
+          "text": "The original Lockwood library is on South Campus. Today it is the Health Sciences Library in Abbott Hall.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html"
+        },
+        {
+          "text": "Lockwood Library has one of the finest collections of books, periodicals and government documents in New York.",
+          "source": "https://www.buffalo.edu/administrative-services/managing-facilities/planning-designing-and-construction/building-profiles/profile-host-page.host.html/content/shared/university/page-content/facilities/lockwd.detail.html"
+        }
       ]
     }
   },
-
   "jokes": [
     "The Stampede bus is free, but today, Bull, your legs are the Stampede.",
     "There is a 60-acre lake in the middle of campus. Please find your stops on dry land.",
