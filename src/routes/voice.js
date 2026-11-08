@@ -90,7 +90,7 @@ export function createVoiceRouter({ service, loadPlace = loadPlaceFromFile }) {
   })
 
   // POST /api/voice/place-info
-  // body: { "text": "tell me about this hall", "stopId": "capen-hall" }
+  // body: { "text": "tell me about this hall", "stopId": "capen" }
   // The stopId is the place the player is at ("this hall"). The text decides the intent:
   // orientation words ("orient", "inside", "where", "floor"...) -> orient, otherwise about.
   // Responds with audio/mpeg. Headers: X-Voice-Text (spoken text), X-Place-Intent.

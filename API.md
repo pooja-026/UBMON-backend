@@ -37,13 +37,18 @@ The game must never wait on or break because of voice.
 
 ## IDs
 
-| Kind | Current ids |
-| --- | --- |
-| Stop ids (`stops.json`) | `mock-a`, `mock-b`, `mock-c`, `mock-d` (mock data until the real stops land) |
-| Creature ids (`creatures.json`) | `mock-creature-a`, `mock-creature-b`, `mock-creature-c`, `mock-creature-d` |
-| Place ids (`place-info.json`) | `lockwood-library`, `natural-sciences-complex`, `capen-hall`, `broadview-arena`, `davis-hall`, `student-union`, `center-for-the-arts`, `clemens-hall` |
+The ids are the same as the frontend's `src/data/locations.json`. The stop id is used for stops, narration and place info. The creature id is used for creatures and the quiz.
 
-When the real stops are added, stop ids and place ids should be the same names, for example `capen-hall`.
+| Stop id | Name | Creature id |
+| --- | --- | --- |
+| `lockwood` | Lockwood Library | `barkive` |
+| `cfa` | Center for the Arts | `pengogh` |
+| `davis` | Davis Hall | `voltiger` |
+| `alumni-arena` | Alumni Arena | `dribbull` |
+| `capen` | Capen Hall | `emberbun` |
+| `student-union` | Student Union | `meowxolotl` |
+| `nsc` | Natural Sciences Complex (NSC) | `splashdrake` |
+| `clemens` | Clemens Hall | `snoutfin` |
 
 ---
 
@@ -68,13 +73,12 @@ All stops. The shape matches `Stop` in the frontend's `src/types.ts`.
 ```json
 200  [
   {
-    "id": "mock-a",
-    "name": "Mock stop A (fake)",
-    "address": "MOCK",
-    "coords": [-78.787, 43.001],
+    "id": "capen",
+    "name": "Capen Hall",
+    "coords": [-78.7891696, 43.0005303],
     "photo": "",
-    "fact": "MOCK fact.",
-    "creatureId": "mock-creature-a"
+    "fact": "Capen Hall is home to the Office of the President.",
+    "creatureId": "emberbun"
   }
 ]
 ```
@@ -90,12 +94,15 @@ All creatures. The correct answer (`question.answerIndex`) is removed.
 ```json
 200  [
   {
-    "id": "mock-creature-a",
-    "name": "Mock creature A",
-    "stopId": "mock-a",
-    "coords": [-78.7873, 43.0013],
-    "art": "",
-    "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"] }
+    "id": "emberbun",
+    "name": "Emberbun",
+    "stopId": "capen",
+    "coords": [-78.7891696, 43.0005303],
+    "art": "/assets/creatures/emberbun.webp",
+    "question": {
+      "text": "Capen Hall is named after Samuel P. Capen. Who was he?",
+      "options": ["A long-time UB chancellor", "A mayor of Buffalo", "A famous painter"]
+    }
   }
 ]
 ```
@@ -143,7 +150,7 @@ Which voice features are working. Call it once when the app loads.
 The narrator line for a game moment. Returns `audio/mpeg`.
 
 ```json
-Request   { "event": "arrival", "stopId": "mock-a" }
+Request   { "event": "arrival", "stopId": "capen" }
 ```
 
 | `event` | `stopId` | When | Typical time |
@@ -165,11 +172,11 @@ Request   { "event": "arrival", "stopId": "mock-a" }
 Spoken info about the place the player is at ("tell about this hall", "orient me"). Returns `audio/mpeg`.
 
 ```json
-Request   { "text": "orient me about this", "stopId": "capen-hall" }
+Request   { "text": "orient me about this", "stopId": "capen" }
 ```
 
 - **`text`:** what the player said or tapped, 1 to 300 characters.
-- **`stopId`:** the place id (see IDs above).
+- **`stopId`:** the stop the player is at (see IDs above).
 - **Intent:** chosen from `text`. Words like orient, inside, where, floor or entrance pick `orient`. Anything else is `about`.
 
 | Response | Body |
@@ -187,12 +194,12 @@ Takes about 2–3 s (AI-written).
 Reads the creature's question and numbered options, then "Tap your answer." The correct answer is never spoken. Returns `audio/mpeg`.
 
 ```json
-Request   { "creatureId": "mock-creature-a" }
+Request   { "creatureId": "emberbun" }
 ```
 
 | Response | Body |
 | --- | --- |
-| `200` | MP3. Header `X-Voice-Text`, e.g. "A wild Sparky appeared! … Option one: … Tap your answer." |
+| `200` | MP3. Header `X-Voice-Text`, e.g. "A wild Emberbun appeared! … Option one: … Tap your answer." |
 | `404` | `{ "error": "Creature not found" }` or `{ "error": "This creature has no question yet" }` |
 | `502` / `503` | Voice failed / not set up |
 
@@ -203,7 +210,7 @@ Takes about 0.8 s.
 The voice reaction after the game has checked an answer. The game decides the outcome; the backend only speaks it. Returns `audio/mpeg`.
 
 ```json
-Request   { "creatureId": "mock-creature-a", "outcome": "retry" }
+Request   { "creatureId": "emberbun", "outcome": "retry" }
 ```
 
 | `outcome` | Send it when |
@@ -257,8 +264,8 @@ async function playVoice(path: string, body: object) {
   }
 }
 
-playVoice('narration', { event: 'arrival', stopId: 'capen-hall' })
-playVoice('quiz/question', { creatureId: 'mock-creature-a' })
+playVoice('narration', { event: 'arrival', stopId: 'capen' })
+playVoice('quiz/question', { creatureId: 'emberbun' })
 ```
 
 On phones, audio must first be unlocked by a tap. Use the full client in [FRONTEND_HANDOFF.md](FRONTEND_HANDOFF.md#4-drop-in-voice-client), which handles this.

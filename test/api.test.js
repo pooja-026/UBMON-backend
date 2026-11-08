@@ -1,6 +1,7 @@
 import { test, before, after } from 'node:test'
 import assert from 'node:assert/strict'
 import { createApp } from '../src/app.js'
+import { creatures } from '../src/data/index.js'
 
 let server
 let base
@@ -55,15 +56,18 @@ test('GET /creatures hides answerIndex', async () => {
 })
 
 test('POST /creatures/:id/answer checks answers', async () => {
+  const creature = creatures[0]
+  const right = creature.question.answerIndex
+  const wrong = (right + 1) % creature.question.options.length
   const post = (body) =>
-    fetch(`${base}/creatures/mock-creature-a/answer`, {
+    fetch(`${base}/creatures/${creature.id}/answer`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
 
-  assert.deepEqual(await (await post({ answerIndex: 0 })).json(), { correct: true })
-  assert.deepEqual(await (await post({ answerIndex: 1 })).json(), { correct: false })
+  assert.deepEqual(await (await post({ answerIndex: right })).json(), { correct: true })
+  assert.deepEqual(await (await post({ answerIndex: wrong })).json(), { correct: false })
   assert.equal((await post({ answerIndex: 99 })).status, 400)
   assert.equal((await post({})).status, 400)
 })

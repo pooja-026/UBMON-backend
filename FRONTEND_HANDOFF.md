@@ -70,11 +70,11 @@ When the player asks about the place they are at, send what they said plus the c
 
 ```json
 POST /api/voice/place-info
-{ "text": "orient me about this", "stopId": "capen-hall" }
+{ "text": "orient me about this", "stopId": "capen" }
 ```
 
 - **What "this" means:** the `stopId` you send. Use the stop the player is at, usually the one just collected.
-- **Which ids work:** the keys in the backend's `place-info.json`. Today these are `lockwood-library`, `natural-sciences-complex`, `capen-hall`, `broadview-arena`, `davis-hall`, `student-union`, `center-for-the-arts` and `clemens-hall`. The game's stop ids should use the same names.
+- **Which ids work:** the keys in the backend's `place-info.json`. These are the same as the game's stop ids: `lockwood`, `cfa`, `davis`, `alumni-arena`, `capen`, `student-union`, `nsc` and `clemens`.
 - **How the intent is chosen:** the backend reads `text`.
   - Orientation words ("orient", "inside", "where", "floor", "entrance", ...) give a walk-through of the building.
   - Anything else gives "about" info.

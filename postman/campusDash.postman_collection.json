@@ -11,15 +11,15 @@
     },
     {
       "key": "stopId",
-      "value": "mock-a"
+      "value": "capen"
     },
     {
       "key": "creatureId",
-      "value": "mock-creature-a"
+      "value": "emberbun"
     },
     {
       "key": "placeId",
-      "value": "capen-hall"
+      "value": "capen"
     }
   ],
   "event": [

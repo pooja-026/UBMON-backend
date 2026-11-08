@@ -36,7 +36,7 @@ The two agents:
 | POST | `/api/voice/place-info` | `{ text, stopId }` → spoken info about that place, from `src/data/place-info.json` |
 | GET | `/api/voice/guide/token` | Short-lived token for the voice guide |
 
-Frontend integration guide: [FRONTEND_HANDOFF.md](FRONTEND_HANDOFF.md).
+API reference: [API.md](API.md). Frontend integration guide: [FRONTEND_HANDOFF.md](FRONTEND_HANDOFF.md).
 
 ## Layout
 

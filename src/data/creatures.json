@@ -1,9 +1,157 @@
 {
-  "_note": "MOCK DATA. Fake creatures and coordinates. NOT final content.",
+  "_note": "One creature per stop, matching the frontend locations.json and roster names. question = the first question for that stop in the frontend questions.json (all still verified:false). answerIndex is never sent to the browser.",
   "creatures": [
-    { "id": "mock-creature-a", "name": "Mock creature A", "stopId": "mock-a", "coords": [-78.7873, 43.0013], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 0 } },
-    { "id": "mock-creature-b", "name": "Mock creature B", "stopId": "mock-b", "coords": [-78.7855, 43.0019], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 1 } },
-    { "id": "mock-creature-c", "name": "Mock creature C", "stopId": "mock-c", "coords": [-78.7889, 43.0025], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 2 } },
-    { "id": "mock-creature-d", "name": "Mock creature D", "stopId": "mock-d", "coords": [-78.7861, 42.9995], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 0 } }
+    {
+      "id": "barkive",
+      "name": "Barkive",
+      "stopId": "lockwood",
+      "coords": [
+        -78.7856791,
+        43.0005899
+      ],
+      "art": "/assets/creatures/barkive.webp",
+      "question": {
+        "text": "Which Lockwood floor is meant for quiet study?",
+        "options": [
+          "1st floor",
+          "4th floor",
+          "Ground floor"
+        ],
+        "answerIndex": 1
+      }
+    },
+    {
+      "id": "pengogh",
+      "name": "Pengogh",
+      "stopId": "cfa",
+      "coords": [
+        -78.7828681,
+        43.0005234
+      ],
+      "art": "/assets/creatures/pengogh.webp",
+      "question": {
+        "text": "What happens in the Center for the Arts besides classes?",
+        "options": [
+          "Live shows and art exhibits",
+          "Basketball games",
+          "Car repairs"
+        ],
+        "answerIndex": 0
+      }
+    },
+    {
+      "id": "voltiger",
+      "name": "Voltiger",
+      "stopId": "davis",
+      "coords": [
+        -78.7876733,
+        43.0018478
+      ],
+      "art": "/assets/creatures/voltiger.webp",
+      "question": {
+        "text": "Which department calls Davis Hall home?",
+        "options": [
+          "Computer Science and Engineering",
+          "Music",
+          "Law"
+        ],
+        "answerIndex": 0
+      }
+    },
+    {
+      "id": "dribbull",
+      "name": "Dribbull",
+      "stopId": "alumni-arena",
+      "coords": [
+        -78.7820242,
+        43.0000497
+      ],
+      "art": "/assets/creatures/dribbull.webp",
+      "question": {
+        "text": "What is the name of UB's mascot?",
+        "options": [
+          "Buffalo Bill",
+          "Victor E. Bull",
+          "Rocky"
+        ],
+        "answerIndex": 1
+      }
+    },
+    {
+      "id": "emberbun",
+      "name": "Emberbun",
+      "stopId": "capen",
+      "coords": [
+        -78.7891696,
+        43.0005303
+      ],
+      "art": "/assets/creatures/emberbun.webp",
+      "question": {
+        "text": "Capen Hall is named after Samuel P. Capen. Who was he?",
+        "options": [
+          "A long-time UB chancellor",
+          "A mayor of Buffalo",
+          "A famous painter"
+        ],
+        "answerIndex": 0
+      }
+    },
+    {
+      "id": "meowxolotl",
+      "name": "Meowxolotl",
+      "stopId": "student-union",
+      "coords": [
+        -78.7858045,
+        43.001477
+      ],
+      "art": "/assets/creatures/meowxolotl.webp",
+      "question": {
+        "text": "Which student group has its offices in the Student Union and funds many clubs?",
+        "options": [
+          "Student Association",
+          "Faculty Senate",
+          "Alumni Board"
+        ],
+        "answerIndex": 0
+      }
+    },
+    {
+      "id": "splashdrake",
+      "name": "Splashdrake",
+      "stopId": "nsc",
+      "coords": [
+        -78.7917218,
+        43.0006826
+      ],
+      "art": "/assets/creatures/splashdrake.webp",
+      "question": {
+        "text": "What does NSC stand for?",
+        "options": [
+          "North Student Center",
+          "Natural Sciences Complex",
+          "New Sports Court"
+        ],
+        "answerIndex": 1
+      }
+    },
+    {
+      "id": "snoutfin",
+      "name": "Snoutfin",
+      "stopId": "clemens",
+      "coords": [
+        -78.785085,
+        43.0003302
+      ],
+      "art": "/assets/creatures/snoutfin.webp",
+      "question": {
+        "text": "Clemens Hall is named after Samuel Clemens. What is his famous pen name?",
+        "options": [
+          "Mark Twain",
+          "Dr. Seuss",
+          "Edgar Allan Poe"
+        ],
+        "answerIndex": 0
+      }
+    }
   ]
 }

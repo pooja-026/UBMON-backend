@@ -18,7 +18,7 @@
     "Wikipedia: Broadview Arena"
   ],
 
-  "lockwood-library": {
+  "lockwood": {
     "name": "Lockwood Memorial Library",
     "about": [
       "Lockwood is UB's main research library.",
@@ -36,7 +36,7 @@
     ]
   },
 
-  "natural-sciences-complex": {
+  "nsc": {
     "name": "Natural Sciences Complex",
     "about": [
       "The Natural Sciences Complex, or NSC, opened in fall 1994 and cost 49.9 million dollars.",
@@ -53,7 +53,7 @@
     ]
   },
 
-  "capen-hall": {
+  "capen": {
     "name": "Capen Hall",
     "about": [
       "Capen Hall is UB's command center.",
@@ -70,8 +70,8 @@
     ]
   },
 
-  "broadview-arena": {
-    "name": "Broadview Arena",
+  "alumni-arena": {
+    "name": "Alumni Arena",
     "about": [
       "Broadview Arena was called Alumni Arena until it was renamed on March 11, 2026. If a senior says Alumni Arena, they mean this building.",
       "The old name honored the nearly 100,000 people who had graduated from UB since 1846.",
@@ -87,7 +87,7 @@
     ]
   },
 
-  "davis-hall": {
+  "davis": {
     "name": "Davis Hall",
     "about": [
       "Davis Hall opened on May 10, 2012.",
@@ -120,7 +120,7 @@
     ]
   },
 
-  "center-for-the-arts": {
+  "cfa": {
     "name": "Center for the Arts",
     "about": [
       "The Center for the Arts, or CFA, is the skylit building at the end of Coventry Road.",
@@ -137,7 +137,7 @@
     ]
   },
 
-  "clemens-hall": {
+  "clemens": {
     "name": "Clemens Hall",
     "about": [
       "Clemens Hall is named for Samuel Clemens, better known as Mark Twain, who lived in Buffalo from 1869 to 1871.",

@@ -1,9 +1,93 @@
 {
-  "_note": "MOCK DATA. Fake coordinates near the map center. NOT real UB sign locations.",
+  "_note": "Real UB North Campus stops, from the frontend src/data/locations.json (coords are [lng, lat]). fact is read word for word on arrival.",
   "stops": [
-    { "id": "mock-a", "name": "Mock stop A (fake)", "address": "MOCK", "coords": [-78.7870, 43.0010], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-a" },
-    { "id": "mock-b", "name": "Mock stop B (fake)", "address": "MOCK", "coords": [-78.7852, 43.0016], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-b" },
-    { "id": "mock-c", "name": "Mock stop C (fake)", "address": "MOCK", "coords": [-78.7886, 43.0022], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-c" },
-    { "id": "mock-d", "name": "Mock stop D (fake)", "address": "MOCK", "coords": [-78.7864, 42.9998], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-d" }
+    {
+      "id": "lockwood",
+      "name": "Lockwood Library",
+      "coords": [
+        -78.7856791,
+        43.0005899
+      ],
+      "photo": "",
+      "fact": "Lockwood is UB's main research library.",
+      "creatureId": "barkive"
+    },
+    {
+      "id": "cfa",
+      "name": "Center for the Arts",
+      "coords": [
+        -78.7828681,
+        43.0005234
+      ],
+      "photo": "",
+      "fact": "Its Mainstage theatre seats 1,750 people.",
+      "creatureId": "pengogh"
+    },
+    {
+      "id": "davis",
+      "name": "Davis Hall",
+      "coords": [
+        -78.7876733,
+        43.0018478
+      ],
+      "photo": "",
+      "fact": "Davis Hall is home base for Computer Science and Engineering, and Electrical Engineering.",
+      "creatureId": "voltiger"
+    },
+    {
+      "id": "alumni-arena",
+      "name": "Alumni Arena",
+      "coords": [
+        -78.7820242,
+        43.0000497
+      ],
+      "photo": "",
+      "fact": "Its main gym seats 10,000 people.",
+      "creatureId": "dribbull"
+    },
+    {
+      "id": "capen",
+      "name": "Capen Hall",
+      "coords": [
+        -78.7891696,
+        43.0005303
+      ],
+      "photo": "",
+      "fact": "Capen Hall is home to the Office of the President.",
+      "creatureId": "emberbun"
+    },
+    {
+      "id": "student-union",
+      "name": "Student Union",
+      "coords": [
+        -78.7858045,
+        43.001477
+      ],
+      "photo": "",
+      "fact": "The Student Union is open 24 hours a day, 7 days a week.",
+      "creatureId": "meowxolotl"
+    },
+    {
+      "id": "nsc",
+      "name": "Natural Sciences Complex (NSC)",
+      "coords": [
+        -78.7917218,
+        43.0006826
+      ],
+      "photo": "",
+      "fact": "Its roof has 128 exhaust cones, one for each lab, so people compare it to a giant birthday cake.",
+      "creatureId": "splashdrake"
+    },
+    {
+      "id": "clemens",
+      "name": "Clemens Hall",
+      "coords": [
+        -78.785085,
+        43.0003302
+      ],
+      "photo": "",
+      "fact": "Clemens Hall is named for Mark Twain, whose real name was Samuel Clemens.",
+      "creatureId": "snoutfin"
+    }
   ]
 }

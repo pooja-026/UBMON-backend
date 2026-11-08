@@ -213,7 +213,7 @@ describe('voice routes (configured)', () => {
   })
 
   test('POST /narration returns mp3 with the spoken text', async () => {
-    const res = await postNarration(base, { event: 'leg-start', stopId: 'mock-a' })
+    const res = await postNarration(base, { event: 'leg-start', stopId: 'capen' })
     assert.equal(res.status, 200)
     assert.equal(res.headers.get('content-type'), 'audio/mpeg')
     assert.equal(decodeURIComponent(res.headers.get('x-voice-text')), 'Hi Bull!')
@@ -221,7 +221,7 @@ describe('voice routes (configured)', () => {
   })
 
   test('POST /narration validates input', async () => {
-    assert.equal((await postNarration(base, { event: 'dance', stopId: 'mock-a' })).status, 400)
+    assert.equal((await postNarration(base, { event: 'dance', stopId: 'capen' })).status, 400)
     assert.equal((await postNarration(base, { event: 'arrival', stopId: 'nope' })).status, 404)
     assert.equal((await postNarration(base, { event: 'midpoint' })).status, 404)
   })
@@ -249,7 +249,7 @@ describe('voice routes (not configured)', () => {
   after(() => server.close())
 
   test('returns 503 instead of calling ElevenLabs', async () => {
-    assert.equal((await postNarration(base, { event: 'arrival', stopId: 'mock-a' })).status, 503)
+    assert.equal((await postNarration(base, { event: 'arrival', stopId: 'capen' })).status, 503)
     assert.equal((await fetch(`${base}/guide/token`)).status, 503)
   })
 })
@@ -274,7 +274,7 @@ describe('voice routes (ElevenLabs down)', () => {
 
   test('returns a friendly 502 without leaking details', async (t) => {
     t.mock.method(console, 'error', () => {})
-    const res = await postNarration(base, { event: 'arrival', stopId: 'mock-a' })
+    const res = await postNarration(base, { event: 'arrival', stopId: 'capen' })
     assert.equal(res.status, 502)
     assert.deepEqual(await res.json(), { error: 'Voice is not available right now' })
   })
