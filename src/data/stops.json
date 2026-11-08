@@ -1,0 +1,9 @@
+{
+  "_note": "MOCK DATA. Fake coordinates near the map center. NOT real UB sign locations.",
+  "stops": [
+    { "id": "mock-a", "name": "Mock stop A (fake)", "address": "MOCK", "coords": [-78.7870, 43.0010], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-a" },
+    { "id": "mock-b", "name": "Mock stop B (fake)", "address": "MOCK", "coords": [-78.7852, 43.0016], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-b" },
+    { "id": "mock-c", "name": "Mock stop C (fake)", "address": "MOCK", "coords": [-78.7886, 43.0022], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-c" },
+    { "id": "mock-d", "name": "Mock stop D (fake)", "address": "MOCK", "coords": [-78.7864, 42.9998], "photo": "", "fact": "MOCK fact.", "creatureId": "mock-creature-d" }
+  ]
+}

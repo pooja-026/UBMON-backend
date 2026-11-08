@@ -1,0 +1,312 @@
+{
+  "info": {
+    "name": "campusDash backend",
+    "description": "Requests for the campusDash backend. Start the server first: `npm run dev` in the backend folder. Change the baseUrl and stopId collection variables if needed. Narration requests show the spoken text in the Test Results / Console, and an audio player in the Visualize tab.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    },
+    {
+      "key": "stopId",
+      "value": "mock-a"
+    },
+    {
+      "key": "creatureId",
+      "value": "mock-creature-a"
+    },
+    {
+      "key": "placeId",
+      "value": "capen-hall"
+    }
+  ],
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Runs after every request. For narration, show the spoken text and an audio player.",
+          "const voiceText = pm.response.headers.get('X-Voice-Text');",
+          "if (voiceText) {",
+          "  const text = decodeURIComponent(voiceText);",
+          "  console.log('Spoken text:', text);",
+          "  pm.test('Spoken text: ' + text, () => pm.expect(text).to.not.be.empty);",
+          "  const audio = pm.response.stream.toString('base64');",
+          "  pm.visualizer.set(",
+          "    '<p style=\"font-family:sans-serif\">{{text}}</p><audio controls autoplay src=\"data:audio/mpeg;base64,{{audio}}\"></audio>',",
+          "    { text, audio }",
+          "  );",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Voice",
+      "item": [
+        {
+          "name": "Voice endpoints list",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/voice"
+          }
+        },
+        {
+          "name": "Voice status",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/voice/status"
+          }
+        },
+        {
+          "name": "Narration - welcome",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"welcome\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/narration"
+          }
+        },
+        {
+          "name": "Narration - leg-start",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"leg-start\",\n  \"stopId\": \"{{stopId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/narration"
+          }
+        },
+        {
+          "name": "Narration - midpoint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"midpoint\",\n  \"stopId\": \"{{stopId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/narration"
+          }
+        },
+        {
+          "name": "Narration - arrival",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"arrival\",\n  \"stopId\": \"{{stopId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/narration"
+          }
+        },
+        {
+          "name": "Narration - bad event (expect 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"dance\",\n  \"stopId\": \"{{stopId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/narration"
+          }
+        },
+        {
+          "name": "Place info - about",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"tell about this hall\",\n  \"stopId\": \"{{placeId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/place-info"
+          }
+        },
+        {
+          "name": "Place info - orient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"orient me about this\",\n  \"stopId\": \"{{placeId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/place-info"
+          }
+        },
+        {
+          "name": "Quiz - read question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creatureId\": \"{{creatureId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/quiz/question"
+          }
+        },
+        {
+          "name": "Quiz - reaction correct",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creatureId\": \"{{creatureId}}\",\n  \"outcome\": \"correct\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/quiz/reaction"
+          }
+        },
+        {
+          "name": "Quiz - reaction retry",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creatureId\": \"{{creatureId}}\",\n  \"outcome\": \"retry\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/quiz/reaction"
+          }
+        },
+        {
+          "name": "Quiz - reaction ran-away",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creatureId\": \"{{creatureId}}\",\n  \"outcome\": \"ran-away\"\n}"
+            },
+            "url": "{{baseUrl}}/api/voice/quiz/reaction"
+          }
+        },
+        {
+          "name": "Guide token",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/voice/guide/token"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Game data",
+      "item": [
+        {
+          "name": "All stops",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/stops"
+          }
+        },
+        {
+          "name": "One stop",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/stops/{{stopId}}"
+          }
+        },
+        {
+          "name": "All creatures",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/creatures"
+          }
+        },
+        {
+          "name": "Answer creature question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"answerIndex\": 0\n}"
+            },
+            "url": "{{baseUrl}}/api/creatures/{{creatureId}}/answer"
+          }
+        }
+      ]
+    }
+  ]
+}

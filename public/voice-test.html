@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voice test</title>
+  <style>
+    :root {
+      --navy: #0b1b33; --card: rgba(8, 20, 40, 0.9); --border: rgba(255, 255, 255, 0.14);
+      --text: #ffffff; --muted: #b9c6dc; --blue: #005bbb; --blue-dark: #003f87;
+      --amber: #ffb02e; --mint: #3ddc97; --coral: #ff7a6b; --sky: #8fe3ff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--navy); color: var(--text); font: 15px/1.5 system-ui, sans-serif; }
+    main { max-width: 640px; margin: 0 auto; padding: 20px 16px 40px; }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    h2 { font-size: 16px; margin: 0 0 12px; }
+    p.lead { color: var(--muted); margin: 0 0 20px; }
+    section { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 16px; margin-bottom: 16px; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    button { min-height: 44px; padding: 0 16px; border-radius: 14px; border: 0; background: var(--blue); color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+    button:active { background: var(--blue-dark); }
+    button:disabled { opacity: 0.45; cursor: default; }
+    button.secondary { background: transparent; border: 1px solid var(--border); }
+    select, input { min-height: 44px; border-radius: 14px; border: 1px solid var(--border); background: #0f2442; color: var(--text); padding: 0 12px; font: inherit; }
+    input { flex: 1; min-width: 0; }
+    .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 13px; background: rgba(255,255,255,0.08); color: var(--muted); }
+    .pill.on { background: var(--mint); color: var(--navy); }
+    .pill.speaking { background: var(--amber); color: var(--navy); }
+    #log { display: flex; flex-direction: column; gap: 8px; max-height: 360px; overflow-y: auto; margin-top: 12px; }
+    .msg { padding: 8px 12px; border-radius: 14px; max-width: 85%; }
+    .msg.user { align-self: flex-end; background: var(--blue); }
+    .msg.ai { align-self: flex-start; background: rgba(255,255,255,0.08); }
+    .msg.sys { align-self: center; color: var(--muted); font-size: 13px; background: none; }
+    .msg.err { align-self: center; color: var(--coral); font-size: 13px; background: none; }
+    .caption { color: var(--sky); margin-top: 10px; min-height: 1.5em; }
+    label { color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Campus Dash voice test</h1>
+  <p class="lead">Developer tool. Talk to the guide, or play narrator lines. Not part of the game.</p>
+
+  <section>
+    <h2>Two-way guide</h2>
+    <div class="row">
+      <button id="start">Start talking</button>
+      <button id="stop" class="secondary" disabled>Stop</button>
+      <span id="status" class="pill">Disconnected</span>
+      <span id="mode" class="pill" hidden></span>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <label for="target">Walking to</label>
+      <select id="target"></select>
+    </div>
+    <form id="typeForm" class="row" style="margin-top:12px">
+      <input id="typed" placeholder="Or type a message" autocomplete="off" disabled />
+      <button id="send" disabled>Send</button>
+    </form>
+    <div id="log" aria-live="polite"></div>
+  </section>
+
+  <section>
+    <h2>Narrator lines</h2>
+    <div class="row">
+      <button data-event="welcome">Welcome</button>
+      <button data-event="leg-start">Leg start</button>
+      <button data-event="midpoint">Midpoint</button>
+      <button data-event="arrival">Arrival</button>
+    </div>
+    <div id="caption" class="caption"></div>
+  </section>
+
+  <section>
+    <h2>Creature quiz</h2>
+    <div class="row">
+      <label for="creature">Creature</label>
+      <select id="creature"></select>
+      <button id="catch">Catch it</button>
+    </div>
+    <div id="quizQuestion" class="caption"></div>
+    <div id="quizOptions" class="row" style="margin-top:12px"></div>
+    <div id="quizTries" class="caption"></div>
+  </section>
+
+  <section>
+    <h2>Place info</h2>
+    <form id="placeForm">
+      <div class="row">
+        <label for="placeId">I am at</label>
+        <input id="placeId" value="capen-hall" autocomplete="off" />
+      </div>
+      <div class="row" style="margin-top:12px">
+        <input id="placeText" value="tell about this hall" autocomplete="off" />
+        <button>Ask</button>
+      </div>
+    </form>
+    <div class="row" style="margin-top:12px">
+      <button type="button" class="secondary" data-phrase="tell about this hall">Tell about this hall</button>
+      <button type="button" class="secondary" data-phrase="orient me about this">Orient me</button>
+    </div>
+    <div id="placeCaption" class="caption"></div>
+  </section>
+</main>
+
+<script type="module">
+  import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.30.0/+esm'
+
+  const $ = (id) => document.getElementById(id)
+  let conversation = null
+
+  function log(text, kind) {
+    const el = document.createElement('div')
+    el.className = `msg ${kind}`
+    el.textContent = text
+    $('log').append(el)
+    $('log').scrollTop = $('log').scrollHeight
+  }
+
+  function setConnected(on) {
+    $('start').disabled = on
+    $('stop').disabled = !on
+    $('typed').disabled = !on
+    $('send').disabled = !on
+    $('mode').hidden = !on
+  }
+
+  const targetName = () => $('target').selectedOptions[0]?.textContent ?? ''
+
+  // Stops for the "walking to" picker
+  try {
+    const stops = await (await fetch('/api/stops')).json()
+    for (const s of stops) $('target').append(new Option(s.name, s.id))
+  } catch (err) {
+    log('Could not load stops', 'err')
+  }
+
+  $('target').addEventListener('change', () => {
+    if (!conversation) return
+    conversation.sendContextualUpdate(`The player is walking to ${targetName()}.`)
+    log(`Context sent: walking to ${targetName()}`, 'sys')
+  })
+
+  $('start').addEventListener('click', async () => {
+    $('start').disabled = true
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true })
+      const res = await fetch('/api/voice/guide/token')
+      const body = await res.json()
+      if (!res.ok) throw new Error(body.error ?? `HTTP ${res.status}`)
+
+      conversation = await Conversation.startSession({
+        conversationToken: body.conversationToken,
+        connectionType: 'webrtc',
+        onMessage: (m) => log(m.message, (m.role ?? m.source) === 'user' ? 'user' : 'ai'),
+        onModeChange: ({ mode }) => {
+          $('mode').textContent = mode === 'speaking' ? 'Guide speaking' : 'Listening'
+          $('mode').className = `pill ${mode === 'speaking' ? 'speaking' : 'on'}`
+        },
+        onStatusChange: ({ status }) => {
+          $('status').textContent = status
+          $('status').className = `pill ${status === 'connected' ? 'on' : ''}`
+        },
+        onError: (message) => log(`Error: ${message}`, 'err'),
+        onDisconnect: () => {
+          conversation = null
+          setConnected(false)
+          log('Session ended', 'sys')
+        },
+      })
+      setConnected(true)
+      conversation.sendContextualUpdate(`The player is walking to ${targetName()}.`)
+      log(`Connected. Context: walking to ${targetName()}. Say hello!`, 'sys')
+    } catch (err) {
+      console.error(err)
+      log(`Could not start: ${err.message}`, 'err')
+      $('start').disabled = false
+    }
+  })
+
+  $('stop').addEventListener('click', () => conversation?.endSession())
+
+  $('typeForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const text = $('typed').value.trim()
+    if (!text || !conversation) return
+    conversation.sendUserMessage(text)
+    log(text, 'user')
+    $('typed').value = ''
+  })
+
+  // Narrator buttons
+  const player = new Audio()
+  for (const btn of document.querySelectorAll('[data-event]')) {
+    btn.addEventListener('click', async () => {
+      const event = btn.dataset.event
+      $('caption').textContent = 'Generating...'
+      try {
+        const res = await fetch('/api/voice/narration', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ event, stopId: $('target').value }),
+        })
+        if (!res.ok) throw new Error((await res.json()).error)
+        $('caption').textContent = decodeURIComponent(res.headers.get('X-Voice-Text') ?? '')
+        player.src = URL.createObjectURL(await res.blob())
+        await player.play()
+      } catch (err) {
+        $('caption').textContent = `Failed: ${err.message}`
+      }
+    })
+  }
+
+  // Creature quiz: same flow as the game. The voice reads the question and waits;
+  // the tap is checked by /api/creatures/:id/answer, then the voice reacts.
+  const QUIZ_TRIES = 2
+  const creatureList = await (await fetch('/api/creatures')).json().catch(() => [])
+  for (const c of creatureList) $('creature').append(new Option(c.name, c.id))
+
+  async function playVoice(path, body) {
+    const res = await fetch(path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    if (!res.ok) throw new Error((await res.json()).error)
+    const text = decodeURIComponent(res.headers.get('X-Voice-Text') ?? '')
+    player.src = URL.createObjectURL(await res.blob())
+    await player.play()
+    return text
+  }
+
+  $('catch').addEventListener('click', async () => {
+    const creature = creatureList.find((c) => c.id === $('creature').value)
+    if (!creature) return
+    let triesLeft = QUIZ_TRIES
+    $('quizOptions').replaceChildren()
+    $('quizTries').textContent = ''
+    $('quizQuestion').textContent = 'Generating...'
+    try {
+      $('quizQuestion').textContent = await playVoice('/api/voice/quiz/question', { creatureId: creature.id })
+    } catch (err) {
+      $('quizQuestion').textContent = `Voice failed (${err.message}). ${creature.question.text}`
+    }
+    $('quizTries').textContent = `Tries left: ${triesLeft}`
+
+    creature.question.options.forEach((option, index) => {
+      const btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'secondary'
+      btn.textContent = option
+      btn.addEventListener('click', async () => {
+        const { correct } = await (
+          await fetch(`/api/creatures/${creature.id}/answer`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ answerIndex: index }),
+          })
+        ).json()
+        if (!correct) triesLeft -= 1
+        const outcome = correct ? 'correct' : triesLeft > 0 ? 'retry' : 'ran-away'
+        btn.style.background = correct ? 'var(--mint)' : 'var(--coral)'
+        btn.style.color = 'var(--navy)'
+        if (outcome !== 'retry') {
+          for (const b of $('quizOptions').children) b.disabled = true
+        }
+        $('quizTries').textContent = `${outcome}${outcome === 'retry' ? ` (tries left: ${triesLeft})` : ''}`
+        try {
+          $('quizTries').textContent += ' | ' + (await playVoice('/api/voice/quiz/reaction', { creatureId: creature.id, outcome }))
+        } catch (err) {
+          $('quizTries').textContent += ` | voice failed: ${err.message}`
+        }
+      })
+      $('quizOptions').append(btn)
+    })
+  })
+
+  // Place info
+  async function askPlace(text) {
+    $('placeCaption').textContent = 'Generating...'
+    try {
+      const res = await fetch('/api/voice/place-info', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, stopId: $('placeId').value.trim() }),
+      })
+      if (!res.ok) throw new Error((await res.json()).error)
+      const intent = res.headers.get('X-Place-Intent')
+      $('placeCaption').textContent = `[${intent}] ${decodeURIComponent(res.headers.get('X-Voice-Text') ?? '')}`
+      player.src = URL.createObjectURL(await res.blob())
+      await player.play()
+    } catch (err) {
+      $('placeCaption').textContent = `Failed: ${err.message}`
+    }
+  }
+  $('placeForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+    askPlace($('placeText').value.trim())
+  })
+  for (const btn of document.querySelectorAll('[data-phrase]')) {
+    btn.addEventListener('click', () => askPlace(btn.dataset.phrase))
+  }
+</script>
+</body>
+</html>

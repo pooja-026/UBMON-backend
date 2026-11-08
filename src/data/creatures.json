@@ -1,0 +1,9 @@
+{
+  "_note": "MOCK DATA. Fake creatures and coordinates. NOT final content.",
+  "creatures": [
+    { "id": "mock-creature-a", "name": "Mock creature A", "stopId": "mock-a", "coords": [-78.7873, 43.0013], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 0 } },
+    { "id": "mock-creature-b", "name": "Mock creature B", "stopId": "mock-b", "coords": [-78.7855, 43.0019], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 1 } },
+    { "id": "mock-creature-c", "name": "Mock creature C", "stopId": "mock-c", "coords": [-78.7889, 43.0025], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 2 } },
+    { "id": "mock-creature-d", "name": "Mock creature D", "stopId": "mock-d", "coords": [-78.7861, 42.9995], "art": "", "question": { "text": "MOCK question?", "options": ["One", "Two", "Three"], "answerIndex": 0 } }
+  ]
+}

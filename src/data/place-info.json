@@ -1,0 +1,156 @@
+{
+  "_note": "Info spoken by POST /api/voice/place-info. Keys are stop ids (must match the ids the frontend sends). 'about' = what the place is and why it is interesting. 'orientation' = what is inside and where things are. Write short plain sentences. Entries starting with TODO are ignored. Edits apply immediately, no restart needed.",
+
+  "_sources": [
+    "UB North Campus: Stories Behind 8 Buildings (Pooja, Nov 8, 2026), based mainly on UB Libraries University Archives building pages:",
+    "UB Archives: Lockwood Memorial Library",
+    "UB Archives: Natural Sciences Complex",
+    "UB Archives: Samuel P. Capen Hall",
+    "UB Archives: Broadview Arena",
+    "UB Archives: Barbara and Jack Davis Hall",
+    "UB Archives: Student Union",
+    "UB Archives: Center for the Arts",
+    "UB Archives: Samuel L. Clemens Hall",
+    "UB Reporter: Center for the Arts grand opening flashback",
+    "UB Reporter: Davis Hall naming gift",
+    "UBCFA: 30 Years",
+    "UB Spectrum: Broadview deal coverage",
+    "Wikipedia: Broadview Arena"
+  ],
+
+  "lockwood-library": {
+    "name": "Lockwood Memorial Library",
+    "about": [
+      "Lockwood is UB's main research library.",
+      "It got its name from a 1929 gift of 500,000 dollars. Thomas and Marion Lockwood gave it in memory of their fathers.",
+      "The name moved campuses. The first Lockwood was a four-story Georgian building on South Campus, opened in 1935 and now called Abbott Hall.",
+      "In 1977 the name moved to the new North Campus library, which opened in June 1978.",
+      "It is about 237,000 square feet, was built for 9.37 million dollars, and was designed by the Chicago firm Harry Weese and Associates.",
+      "It began as a graduate library for the social sciences and humanities."
+    ],
+    "orientation": [
+      "Lockwood has some hidden collections: the Polish Room, a Map Collection, an East Asian Collection, an International Leisure Reading Collection and a Juvenile Collection.",
+      "It is also a U.S. Government Documents depository.",
+      "Today it serves Arts and Sciences, Education, Engineering, Management and Social Work.",
+      "The Science and Engineering Information Center moved in during 2015."
+    ]
+  },
+
+  "natural-sciences-complex": {
+    "name": "Natural Sciences Complex",
+    "about": [
+      "The Natural Sciences Complex, or NSC, opened in fall 1994 and cost 49.9 million dollars.",
+      "Its roof is often compared to a giant birthday cake. Each of the 128 labs in the research tower has its own exhaust system, so 128 exhaust cones stick up from the roof.",
+      "Its mix of dark and light brick and its big windows were a deliberate break from the older brown brick of North Campus, following the Student Union and the Center for the Arts.",
+      "It had a rough start. In July 1991, nine construction workers fell twelve feet when the supports under a concrete floor they were pouring collapsed.",
+      "It is about 307,000 square feet and was designed by Davis Brody and Associates."
+    ],
+    "orientation": [
+      "NSC is two buildings in one.",
+      "One part is a two-story lecture building with five lecture halls that seat 150 to 350 people, plus five classrooms with 90 seats each.",
+      "Next to it is an eight-story research tower with 128 labs.",
+      "Look up at the roof to spot the 128 exhaust cones."
+    ]
+  },
+
+  "capen-hall": {
+    "name": "Capen Hall",
+    "about": [
+      "Capen Hall is UB's command center.",
+      "It is named after Samuel P. Capen, known as the Architect of UB. He became chancellor in 1922 and turned a loose group of independent schools into a modern university with 14 divisions and a central campus.",
+      "The name was borrowed. Capen Hall first belonged to a medical and dental building on South Campus. When the name moved north in 1977, the old building became Farber Hall.",
+      "It is about 310,000 square feet and was finished in June 1977 for about 6.2 million dollars.",
+      "Capen's own desk from around 1927 survives. It was in the presidential suite when President Tripathi took office in 2011."
+    ],
+    "orientation": [
+      "The President, the Provost, Admissions and 1Capen all work in Capen Hall.",
+      "It also houses Silverman Library, the University Archives and The Poetry Collection.",
+      "The Honors College opened here in 2011.",
+      "Silverman Library got a 7.2 million dollar renovation from December 2014 to August 2016. During the work, its collections and study space moved to Lockwood."
+    ]
+  },
+
+  "broadview-arena": {
+    "name": "Broadview Arena",
+    "about": [
+      "Broadview Arena was called Alumni Arena until it was renamed on March 11, 2026. If a senior says Alumni Arena, they mean this building.",
+      "The old name honored the nearly 100,000 people who had graduated from UB since 1846.",
+      "Broadview Federal Credit Union signed a 15-year, 31.75 million dollar partnership. It also renamed UB Stadium to Broadview Stadium, and named the area between them Broadview Village.",
+      "The deal funds student scholarships and the student emergency fund.",
+      "Famous visitors: the Harlem Globetrotters played here in 2012, and President Obama spoke to a sold-out crowd in 2013.",
+      "It was built in two phases from 1979 to 1985 for about 26.3 million dollars, designed by Buffalo architect Robert Traynham Coles."
+    ],
+    "orientation": [
+      "The main gym seats 10,000 people. It hosts basketball, wrestling, volleyball, commencement and Distinguished Speaker Series talks.",
+      "There is also a triple gym, a wrestling room, a dance studio and a gymnastics area.",
+      "It has an eight-lane, Olympic-size pool."
+    ]
+  },
+
+  "davis-hall": {
+    "name": "Davis Hall",
+    "about": [
+      "Davis Hall opened on May 10, 2012.",
+      "It is named after Jack and Barbara Davis. Jack graduated from UB engineering in 1955. They gave 5 million dollars toward the building, and Jack said UB's education is what made him an engineer.",
+      "In 1964 Jack founded I Squared R Element Company, the only U.S. maker of certain heating elements used to produce display glass, fiber optics and solar panels.",
+      "Davis Hall is LEED Gold certified, and was named Best Educational Project in Business First's 2012 Brick By Brick awards."
+    ],
+    "orientation": [
+      "Davis Hall is home base for Computer Science and Engineering, and Electrical Engineering.",
+      "It has smart rooms that adapt to how they are used.",
+      "It has clean rooms for nanotech, electronics and biomedical research.",
+      "It also houses the CEDAR and CUBS research centers."
+    ]
+  },
+
+  "student-union": {
+    "name": "Student Union",
+    "about": [
+      "Students fought for this building. For years after 1982, UB had no real student union on either campus.",
+      "When Squire Hall, the South Campus union, closed on February 26, 1982, more than 200 students held a sit-in. Thirty-two refused to leave and were charged with criminal trespassing. President Ketter suspended them as his last act in office.",
+      "The Student Activities Center opened in 1984. In 1985, students passed a resolution calling it too small and demanding an expansion.",
+      "The expansion added about 110,000 square feet for 12.4 million dollars and finished almost a year early.",
+      "It was renamed the Student Union in April 1992 and dedicated that November, giving 75 clubs a home.",
+      "At the opening, President Greiner told students it was all theirs to shape.",
+      "UB celebrated a renovated grand reopening in January 2025."
+    ],
+    "orientation": [
+      "The Student Union has been home to student clubs since it was dedicated in 1992.",
+      "It was renovated and reopened in January 2025."
+    ]
+  },
+
+  "center-for-the-arts": {
+    "name": "Center for the Arts",
+    "about": [
+      "The Center for the Arts, or CFA, is the skylit building at the end of Coventry Road.",
+      "It opened in 1994 as the Fine Arts Center and cost 50 million dollars.",
+      "The arts departments moved in during September 1993, before the stages were done. It was the first time all of UB's arts departments sat close together.",
+      "An opening festival ran from October 28 to November 20, 1994, and the Drama Theatre opened with The Threepenny Opera.",
+      "Ray Charles is among the artists who later performed here.",
+      "It was designed by Gwathmey Siegel of New York City."
+    ],
+    "orientation": [
+      "CFA has four theatres. The largest is the 1,750-seat Mainstage. There is also the Drama Theatre, a Black Box Theatre and a screening room.",
+      "It has two art galleries, video and sound studios, dance studios, and even a metal foundry.",
+      "The atrium seats 600 and is a favorite meeting spot for students."
+    ]
+  },
+
+  "clemens-hall": {
+    "name": "Clemens Hall",
+    "about": [
+      "Clemens Hall is named for Samuel Clemens, better known as Mark Twain, who lived in Buffalo from 1869 to 1871.",
+      "In Buffalo, Twain lived at 472 Delaware Avenue and was editor and part-owner of the Buffalo Express. His first child, Langdon, was born here.",
+      "Twain gave the Huckleberry Finn manuscript to the public library's predecessor, but the first half went missing. It turned up in Los Angeles in 1991.",
+      "The full manuscript is now on display in the Mark Twain Room at the downtown Central Library.",
+      "In March 1989, a couch caught fire on the seventh floor, causing up to 25,000 dollars in smoke damage.",
+      "It was finished in May 1976 for about 5.4 million dollars, designed by Ulrich Franzen and Associates."
+    ],
+    "orientation": [
+      "Clemens Hall has ten stories.",
+      "It holds Arts and Sciences administration, English, Romance Languages, Comparative Literature and American Studies.",
+      "The language labs are here too."
+    ]
+  }
+}
